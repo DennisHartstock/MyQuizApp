@@ -5,4 +5,5 @@
     <string name="welcome">Welcome!</string>
     <string name="name">Name</string>
     <string name="bt_start">start</string>
+    <string name="bt_submit">submit</string>
 </resources>
