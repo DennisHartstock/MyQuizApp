@@ -7,4 +7,6 @@
     <string name="bt_start">start</string>
     <string name="bt_submit">submit</string>
     <string name="bt_finish">finish</string>
+    <string name="bt_new_game">new game</string>
+    <string name="bt_next_question">next question</string>
 </resources>

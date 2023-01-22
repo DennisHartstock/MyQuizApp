@@ -1,12 +1,11 @@
 package com.commcode.myquizapp
 
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
+class QuizQuestionsActivity : AppCompatActivity() {
 
     private var mCurrentPosition = 0
     private var mQuestionsList: ArrayList<Question>? = null
@@ -39,24 +38,51 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     countCorrectAnswers++
                 }
                 answerView(newQuestion.correctAnswer, R.drawable.correct_answer_bg)
-                btSubmit.text = "next Question"
+                btSubmit.text = getString(R.string.bt_next_question)
                 mSelectedOptionPosition = 0
 
             } else if (mCurrentPosition < mQuestionsList!!.size - 1) {
-                mCurrentPosition++
                 setNewQuestion()
             } else {
                 pbCountQuestions.progress = 0
-                tvCountQuestions.text = "$countCorrectAnswers/${pbCountQuestions.max}"
+                "$countCorrectAnswers/${pbCountQuestions.max}".also { tvCountQuestions.text = it }
                 Toast.makeText(
                     this,
                     "You have $countCorrectAnswers of ${pbCountQuestions.max} correct answers",
                     Toast.LENGTH_LONG
                 ).show()
-                btSubmit.text = "new game"
+                btSubmit.text = getString(R.string.bt_new_game)
                 mCurrentPosition = 0
                 countCorrectAnswers = 0
             }
+        }
+
+        tvOption1.setOnClickListener {
+            setDefaultOptionViews()
+            mSelectedOptionPosition = 1
+            tvOption1.background =
+                ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
+        }
+
+        tvOption2.setOnClickListener {
+            setDefaultOptionViews()
+            mSelectedOptionPosition = 2
+            tvOption2.background =
+                ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
+        }
+
+        tvOption3.setOnClickListener {
+            setDefaultOptionViews()
+            mSelectedOptionPosition = 3
+            tvOption3.background =
+                ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
+        }
+
+        tvOption4.setOnClickListener {
+            setDefaultOptionViews()
+            mSelectedOptionPosition = 4
+            tvOption4.background =
+                ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
         }
     }
 
@@ -80,11 +106,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tvOption2.text = newQuestion.option2
         tvOption3.text = newQuestion.option3
         tvOption4.text = newQuestion.option4
-        tvOption1.setBackgroundResource(android.R.color.darker_gray)
-        tvOption2.setBackgroundResource(android.R.color.darker_gray)
-        tvOption3.setBackgroundResource(android.R.color.darker_gray)
-        tvOption4.setBackgroundResource(android.R.color.darker_gray)
-        btSubmit.text = "submit"
+        setDefaultOptionViews()
+        btSubmit.text = getString(R.string.bt_submit)
+        mCurrentPosition++
     }
 
     private fun initViews() {
@@ -99,46 +123,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         btSubmit = findViewById(R.id.btSubmit)
     }
 
-    override fun onClick(view: View?) {
-        when (view) {
-            tvOption1 -> {
-                mSelectedOptionPosition = 1
-                view.background =
-                    ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
-                tvOption2.setBackgroundResource(android.R.color.darker_gray)
-                tvOption3.setBackgroundResource(android.R.color.darker_gray)
-                tvOption4.setBackgroundResource(android.R.color.darker_gray)
-            }
-            tvOption2 -> {
-                mSelectedOptionPosition = 2
-                view.background =
-                    ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
-                tvOption1.setBackgroundResource(android.R.color.darker_gray)
-                tvOption3.setBackgroundResource(android.R.color.darker_gray)
-                tvOption4.setBackgroundResource(android.R.color.darker_gray)
-            }
-            tvOption3 -> {
-                mSelectedOptionPosition = 3
-                view.background =
-                    ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
-                tvOption2.setBackgroundResource(android.R.color.darker_gray)
-                tvOption1.setBackgroundResource(android.R.color.darker_gray)
-                tvOption4.setBackgroundResource(android.R.color.darker_gray)
-            }
-            tvOption4 -> {
-                mSelectedOptionPosition = 4
-                view.background =
-                    ContextCompat.getDrawable(this, R.drawable.selected_option_bg)
-                tvOption2.setBackgroundResource(android.R.color.darker_gray)
-                tvOption3.setBackgroundResource(android.R.color.darker_gray)
-                tvOption1.setBackgroundResource(android.R.color.darker_gray)
-            }
-            else -> {
-                tvOption1.setBackgroundResource(android.R.color.darker_gray)
-                tvOption2.setBackgroundResource(android.R.color.darker_gray)
-                tvOption3.setBackgroundResource(android.R.color.darker_gray)
-                tvOption4.setBackgroundResource(android.R.color.darker_gray)
-            }
-        }
+    private fun setDefaultOptionViews() {
+        tvOption1.setBackgroundResource(android.R.color.darker_gray)
+        tvOption2.setBackgroundResource(android.R.color.darker_gray)
+        tvOption3.setBackgroundResource(android.R.color.darker_gray)
+        tvOption4.setBackgroundResource(android.R.color.darker_gray)
     }
 }

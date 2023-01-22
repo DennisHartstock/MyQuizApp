@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="0/10"
+                tools:text="0/10"
                 android:textColor="@android:color/holo_orange_light" />
 
         </LinearLayout>
@@ -76,7 +76,6 @@
                 android:background="@android:color/darker_gray"
                 android:gravity="center"
                 android:padding="8dp"
-                android:onClick="onClick"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="20sp"
                 tools:text="Option 1" />
@@ -88,7 +87,6 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
                 android:gravity="center"
-                android:onClick="onClick"
                 android:padding="8dp"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="20sp"
@@ -101,7 +99,6 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
                 android:gravity="center"
-                android:onClick="onClick"
                 android:padding="8dp"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="20sp"
@@ -114,7 +111,6 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
                 android:gravity="center"
-                android:onClick="onClick"
                 android:padding="8dp"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="20sp"
