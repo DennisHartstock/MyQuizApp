@@ -3,13 +3,13 @@
     <string name="my_quiz_app">My Quiz App</string>
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="welcome">Welcome!</string>
-    <string name="name">Name</string>
+    <string name="username">Name</string>
     <string name="bt_start">start</string>
     <string name="bt_submit">submit</string>
     <string name="bt_finish">finish</string>
     <string name="bt_new_game">new game</string>
     <string name="bt_next_question">next question</string>
-    <string name="tv_score">Your score is countCorrectAnswers out of maxQuestions</string>
+    <string name="tv_score">Your score is countCorrectAnswers out of totalQuestions</string>
     <string name="congratulations">Congratulations!</string>
     <string name="result">Result</string>
 </resources>

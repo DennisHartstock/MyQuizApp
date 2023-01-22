@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var etName: EditText
+    private lateinit var etUsername: EditText
     private lateinit var btStart: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         initViews()
 
         btStart.setOnClickListener {
-            if (etName.text.isNotEmpty()) {
+            if (etUsername.text.isNotEmpty()) {
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
+                intent.putExtra(Constants.USERNAME, etUsername.text.toString())
                 startActivity(intent)
                 finish()
             } else {
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        etName = findViewById(R.id.etName)
+        etUsername = findViewById(R.id.etUsername)
         btStart = findViewById(R.id.btStart)
     }
 }

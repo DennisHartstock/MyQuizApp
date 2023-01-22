@@ -1,7 +1,11 @@
 package com.commcode.myquizapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -11,6 +15,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition = 0
     private var countCorrectAnswers = 0
+    private var username = ""
 
     private lateinit var newQuestion: Question
     private lateinit var pbCountQuestions: ProgressBar
@@ -26,6 +31,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
         initViews()
+        username = intent.getStringExtra(Constants.USERNAME).toString()
 
         mQuestionsList = Constants.getQuestions()
         setNewQuestion()
@@ -41,19 +47,16 @@ class QuizQuestionsActivity : AppCompatActivity() {
                 btSubmit.text = getString(R.string.bt_next_question)
                 mSelectedOptionPosition = 0
 
-            } else if (mCurrentPosition < mQuestionsList!!.size - 1) {
+            } else if (mCurrentPosition < mQuestionsList!!.size) {
                 setNewQuestion()
             } else {
-                pbCountQuestions.progress = 0
                 "$countCorrectAnswers/${pbCountQuestions.max}".also { tvCountQuestions.text = it }
-                Toast.makeText(
-                    this,
-                    "You have $countCorrectAnswers of ${pbCountQuestions.max} correct answers",
-                    Toast.LENGTH_LONG
-                ).show()
-                btSubmit.text = getString(R.string.bt_new_game)
-                mCurrentPosition = 0
-                countCorrectAnswers = 0
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra(Constants.USERNAME, username)
+                intent.putExtra(Constants.COUNT_CORRECT_ANSWERS, countCorrectAnswers)
+                intent.putExtra(Constants.TOTAL_QUESTIONS, pbCountQuestions.max)
+                startActivity(intent)
+                finish()
             }
         }
 

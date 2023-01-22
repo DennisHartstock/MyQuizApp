@@ -60,10 +60,10 @@
                 android:padding="8dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etName"
+                    android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name"
+                    android:hint="@string/username"
                     android:inputType="textCapWords"
                     android:textColor="@android:color/holo_red_light" />
 
